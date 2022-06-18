@@ -11,12 +11,14 @@ import SwiftUI
 public struct GeneratingButtonView: View {
     public var buttonLabel: AnyView
     public var convertingView: AnyView
+    public var showSheet: Binding<Bool>
     
     @StateObject var viewModel = ShareSheetViewModel()
     
-    public init(buttonLabel: AnyView, convertingView: AnyView) {
+    public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView) {
         self.buttonLabel = buttonLabel
         self.convertingView = convertingView
+        self.showSheet = showSheet
     }
     public var body: some View {
         VStack {
@@ -26,7 +28,7 @@ public struct GeneratingButtonView: View {
                 } complition: { status, url in
                     if let url = url,status{
                         viewModel.pdfURL = url
-                        viewModel.showSheet.toggle()
+                        showSheet.wrappedValue = true
                     }else{
                         print("failed to produce pdf file")
                     }
@@ -41,5 +43,4 @@ public struct GeneratingButtonView: View {
 @available(iOS 13.0, *)
 class ShareSheetViewModel: ObservableObject{
     @Published var pdfURL: URL?
-    @Published var showSheet: Bool = false
 }
