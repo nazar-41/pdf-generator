@@ -12,7 +12,7 @@ import SwiftUI
 //MARK: - Extracting View's height and width with the help of Hosting Controller and ScrollView ( From KAVSOFT )
 
 @available(iOS 13.0, *)
-extension View{
+public extension View{
     func convertToScrollView<Content: View>(@ViewBuilder content: @escaping ()-> Content) -> UIScrollView{
         let scrollView = UIScrollView()
         
