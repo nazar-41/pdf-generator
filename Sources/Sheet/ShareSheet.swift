@@ -10,8 +10,11 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct ShareSheet: UIViewControllerRepresentable{
-    public init(){}
     public var urls: [Any]
+    
+    public init(urls: [Any]){
+        self.urls = urls
+    }
     
     public func makeUIViewController(context: Context) -> UIActivityViewController {
         let controller = UIActivityViewController(activityItems: urls, applicationActivities: nil)
