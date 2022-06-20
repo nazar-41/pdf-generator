@@ -11,3 +11,11 @@ dependencies: [
     .Package(url: "https://github.com/NazarWelkakayew/PDF-Generator.git", branch: .main)
 ]
 ```
+
+### Import the framework
+
+First thing is to import the framework. See the Installation instructions on how to add the framework to your project.
+
+```swift
+import PDF_Generator
+```
