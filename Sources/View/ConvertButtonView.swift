@@ -17,6 +17,36 @@ public struct GeneratingButtonViewb<Content: View>: View {
 
     let buttonLabel: Content
     let convertingView: Content
+    
+    
+    func check(label: @escaping ()-> Content, view: @escaping () -> Content) -> some View{
+        
+        VStack {
+            Button {
+                exportToPDF {
+                    view()
+                } complition: { status, url in
+                    if let url = url,status{
+                        viewModel.pdfURL = url
+                        showSheet.wrappedValue = true
+                    }else{
+                        print("failed to produce pdf file")
+                    }
+                }
+            } label: {
+                label()
+            }
+        }
+        .sheet(isPresented: showSheet) {
+            viewModel.pdfURL = nil
+        } content: {
+            if let pdfURL = viewModel.pdfURL {
+                ShareSheet(urls: [pdfURL])
+                //                ShareSheet()
+            }
+        }
+        //
+    }
 //    public var buttonLabel: AnyView
 //    public var convertingView: AnyView
     
@@ -33,36 +63,43 @@ public struct GeneratingButtonViewb<Content: View>: View {
 //        self.content = content()
 //    }
     public init(showSheet: Binding<Bool>, buttonLabel:  () -> Content, convertingView: () -> Content) {
+        self.showSheet = showSheet
+
         self.buttonLabel = buttonLabel()
         self.convertingView = convertingView()
-        self.showSheet = showSheet
     }
     
     public var body: some View {
-        VStack {
-            Button {
-                exportToPDF {
-                    convertingView
-                } complition: { status, url in
-                    if let url = url,status{
-                        viewModel.pdfURL = url
-                        showSheet.wrappedValue = true
-                    }else{
-                        print("failed to produce pdf file")
-                    }
-                }
-            } label: {
-                buttonLabel
-            }
+        check {
+            buttonLabel
+        } view: {
+            convertingView
         }
-        .sheet(isPresented: showSheet) {
-            viewModel.pdfURL = nil
-        } content: {
-            if let pdfURL = viewModel.pdfURL {
-                ShareSheet(urls: [pdfURL])
-                //                ShareSheet()
-            }
-        }
+
+//        VStack {
+//            Button {
+//                exportToPDF {
+//                    convertingView
+//                } complition: { status, url in
+//                    if let url = url,status{
+//                        viewModel.pdfURL = url
+//                        showSheet.wrappedValue = true
+//                    }else{
+//                        print("failed to produce pdf file")
+//                    }
+//                }
+//            } label: {
+//                buttonLabel
+//            }
+//        }
+//        .sheet(isPresented: showSheet) {
+//            viewModel.pdfURL = nil
+//        } content: {
+//            if let pdfURL = viewModel.pdfURL {
+//                ShareSheet(urls: [pdfURL])
+//                //                ShareSheet()
+//            }
+//        }
     }
 }
 

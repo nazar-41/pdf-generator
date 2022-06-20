@@ -88,7 +88,7 @@ public extension View{
         //MARK: Removing the added view
         getRootController().view.subviews.forEach { view in
             if view.tag == 1009{
-                print("removed")
+                //print("removed")
                 view.removeFromSuperview()
             }
         }
