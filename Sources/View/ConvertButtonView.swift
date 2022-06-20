@@ -10,21 +10,38 @@ import Foundation
 import UIKit
 
 @available(iOS 13.0, *)
-public struct GeneratingButtonViewb<Content: View>: View {
+public struct GeneratingButtonViewb: View {
     public var showSheet: Binding<Bool>
 
-    //let content: Content
+    
+    
+    public var buttonLabel: AnyView
+    public var convertingView: AnyView
+    
+//    var buttonLabel: () -> Content
+//    var convertingView: () -> Content
+    
+    @StateObject var viewModel = ShareSheetViewModel()
+    
+    public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView) {
+        self.buttonLabel = buttonLabel
+        self.convertingView = convertingView
+        self.showSheet = showSheet
 
-    let buttonLabel: Content
-    let convertingView: Content
+        //self.content = content()
+    }
+//    public init(showSheet: Binding<Bool>, buttonLabel:  () -> Content, convertingView: () -> Content) {
+//        self.showSheet = showSheet
+//
+//        self.buttonLabel = buttonLabel()
+//        self.convertingView = convertingView()
+//    }
     
-    
-    func check(label: @escaping ()-> Content, view: @escaping () -> Content) -> some View{
-        
+    public var body: some View {
         VStack {
             Button {
                 exportToPDF {
-                    view()
+                    convertingView
                 } complition: { status, url in
                     if let url = url,status{
                         viewModel.pdfURL = url
@@ -34,7 +51,7 @@ public struct GeneratingButtonViewb<Content: View>: View {
                     }
                 }
             } label: {
-                label()
+                buttonLabel
             }
         }
         .sheet(isPresented: showSheet) {
@@ -45,61 +62,6 @@ public struct GeneratingButtonViewb<Content: View>: View {
                 //                ShareSheet()
             }
         }
-        //
-    }
-//    public var buttonLabel: AnyView
-//    public var convertingView: AnyView
-    
-//    var buttonLabel: () -> Content
-//    var convertingView: () -> Content
-    
-    @StateObject var viewModel = ShareSheetViewModel()
-    
-//    public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView, @ViewBuilder content: () -> Content) {
-//        self.buttonLabel = buttonLabel
-//        self.convertingView = convertingView
-//        self.showSheet = showSheet
-//
-//        self.content = content()
-//    }
-    public init(showSheet: Binding<Bool>, buttonLabel:  () -> Content, convertingView: () -> Content) {
-        self.showSheet = showSheet
-
-        self.buttonLabel = buttonLabel()
-        self.convertingView = convertingView()
-    }
-    
-    public var body: some View {
-        check {
-            buttonLabel
-        } view: {
-            convertingView
-        }
-
-//        VStack {
-//            Button {
-//                exportToPDF {
-//                    convertingView
-//                } complition: { status, url in
-//                    if let url = url,status{
-//                        viewModel.pdfURL = url
-//                        showSheet.wrappedValue = true
-//                    }else{
-//                        print("failed to produce pdf file")
-//                    }
-//                }
-//            } label: {
-//                buttonLabel
-//            }
-//        }
-//        .sheet(isPresented: showSheet) {
-//            viewModel.pdfURL = nil
-//        } content: {
-//            if let pdfURL = viewModel.pdfURL {
-//                ShareSheet(urls: [pdfURL])
-//                //                ShareSheet()
-//            }
-//        }
     }
 }
 
