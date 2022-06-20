@@ -37,6 +37,14 @@ public struct GeneratingButtonView: View {
                 buttonLabel
             }
         }
+        .sheet(isPresented: showSheet) {
+            viewModel.pdfURL = nil
+        } content: {
+            if let pdfURL = viewModel.pdfURL {
+                ShareSheet(urls: [pdfURL])
+                //                ShareSheet()
+            }
+        }
     }
 }
 
