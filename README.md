@@ -43,6 +43,7 @@ struct ContentView: View {
     var body: some View {
         
         VStack{
+            //MARK: Button that opens Share Sheet on click
             GeneratingButtonView(showSheet: $showSheet, buttonLabel: convertButton, convertingView: convertingView)
             
             ScrollView(showsIndicators: true) {
@@ -62,12 +63,14 @@ struct ContentView: View {
         }
     }
     
+    //MARK: Button View that converts given View to the PDF file
     private var convertButton: AnyView{
         let buttonView = Image(systemName: "square.and.arrow.up").font(.system(size: 50))
         
         return AnyView(buttonView)
     }
     
+    //MARK: View that you wanna convert to PDF
     private var convertingView: AnyView{
         let view = ContentView()
         
