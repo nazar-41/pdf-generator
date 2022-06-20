@@ -11,31 +11,20 @@ import UIKit
 
 @available(iOS 13.0, *)
 public struct GeneratingButtonViewb: View {
+    @StateObject var viewModel = ShareSheetViewModel()
+    
     public var showSheet: Binding<Bool>
 
-    
-    
     public var buttonLabel: AnyView
     public var convertingView: AnyView
     
-//    var buttonLabel: () -> Content
-//    var convertingView: () -> Content
     
-    @StateObject var viewModel = ShareSheetViewModel()
     
     public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView) {
         self.buttonLabel = buttonLabel
         self.convertingView = convertingView
         self.showSheet = showSheet
-
-        //self.content = content()
     }
-//    public init(showSheet: Binding<Bool>, buttonLabel:  () -> Content, convertingView: () -> Content) {
-//        self.showSheet = showSheet
-//
-//        self.buttonLabel = buttonLabel()
-//        self.convertingView = convertingView()
-//    }
     
     public var body: some View {
         VStack {
