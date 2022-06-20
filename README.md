@@ -8,6 +8,6 @@ Once you have your Swift package set up, adding Starscream as a dependency is as
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/NazarWelkakayew/PDF-Generator.git")
+    .Package(url: "https://github.com/NazarWelkakayew/PDF-Generator.git", branch: .main)
 ]
 ```
