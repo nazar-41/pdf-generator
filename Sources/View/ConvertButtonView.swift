@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @available(iOS 13.0, *)
-public struct GeneratingButtonViewb: View {
+public struct GeneratingButtonView: View {
     @StateObject var viewModel = ShareSheetViewModel()
     
     public var showSheet: Binding<Bool>
