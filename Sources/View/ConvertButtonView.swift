@@ -10,24 +10,31 @@ import Foundation
 import UIKit
 
 @available(iOS 13.0, *)
-public struct GeneratingButtonView<Content: View>: View {
+public struct GeneratingButtonViewb<Content: View>: View {
+    public var showSheet: Binding<Bool>
+
+    //let content: Content
+
+    let buttonLabel: Content
+    let convertingView: Content
 //    public var buttonLabel: AnyView
 //    public var convertingView: AnyView
-    public var showSheet: Binding<Bool>
     
-    var buttonLabel: () -> Content
-    var convertingView: () -> Content
+//    var buttonLabel: () -> Content
+//    var convertingView: () -> Content
     
     @StateObject var viewModel = ShareSheetViewModel()
     
-//    public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView) {
+//    public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView, @ViewBuilder content: () -> Content) {
 //        self.buttonLabel = buttonLabel
 //        self.convertingView = convertingView
 //        self.showSheet = showSheet
+//
+//        self.content = content()
 //    }
-    public init(showSheet: Binding<Bool>, buttonLabel: @escaping () -> Content, convertingView: @escaping ()-> Content) {
-        self.buttonLabel = buttonLabel
-        self.convertingView = convertingView
+    public init(showSheet: Binding<Bool>, buttonLabel:  () -> Content, convertingView: () -> Content) {
+        self.buttonLabel = buttonLabel()
+        self.convertingView = convertingView()
         self.showSheet = showSheet
     }
     
@@ -35,7 +42,7 @@ public struct GeneratingButtonView<Content: View>: View {
         VStack {
             Button {
                 exportToPDF {
-                    //convertingView
+                    convertingView
                 } complition: { status, url in
                     if let url = url,status{
                         viewModel.pdfURL = url
@@ -45,7 +52,7 @@ public struct GeneratingButtonView<Content: View>: View {
                     }
                 }
             } label: {
-               //buttonLabel  //buttonLabel
+                buttonLabel
             }
         }
         .sheet(isPresented: showSheet) {
