@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PDF-Generator",
+        "repositoryURL": "https://github.com/NazarWelkakayew/PDF-Generator",
+        "state": {
+          "branch": "main",
+          "revision": "08fc37f3ba6e72646c0ca27db7a14a1ab363bb06",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

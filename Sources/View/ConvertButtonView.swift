@@ -48,7 +48,6 @@ public struct GeneratingButtonView: View {
         } content: {
             if let pdfURL = viewModel.pdfURL {
                 ShareSheet(urls: [pdfURL])
-                //                ShareSheet()
             }
         }
     }
