@@ -6,6 +6,11 @@ Native Swift Package for iOS Applications.
 
 **Sample project:** https://github.com/NazarWelkakayew/PDF-Generator/tree/main/Example
 
+<div>
+    <img src="Screenshots/s1.gif" width=300>
+    <img src="Screenshots/s2.dif" width=300>
+</div>
+
 ## Setup☕ (Swift Package Manager)
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
