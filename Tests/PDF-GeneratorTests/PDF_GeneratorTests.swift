@@ -6,6 +6,7 @@ final class PDF_GeneratorTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(PDF_Generator().text, "Hello, World!")
+       // XCTAssertEqual(PDF_Generator().text, "Hello, World!")
+        //XCTAssertEqual(PDF_Generator., <#T##expression2: FloatingPoint##FloatingPoint#>, accuracy: <#T##FloatingPoint#>)
     }
 }
