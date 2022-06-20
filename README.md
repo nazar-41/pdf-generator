@@ -8,7 +8,6 @@ Native Swift Package for iOS Applications.
 
 <div>
     <img src="Screenshots/s1.gif" width=300>
-    <img src="Screenshots/s2.gif" width=300>
 </div>
 
 ## Setup☕ (Swift Package Manager)
