@@ -36,8 +36,7 @@ struct ContentView: View {
     }
     
     private var convertButton: AnyView{
-        //let buttonView = Image(systemName: "square.and.arrow.up").font(.system(size: 50))
-        let buttonView = Label("Convert", systemImage: "square.and.arrow.up")
+        let buttonView = Label("Convert", systemImage: "square.and.arrow.up").font(.system(size: 40))
         
         return AnyView(buttonView)
     }
