@@ -10,7 +10,7 @@ Native Swift Package for iOS Applications.
     <img src="Screenshots/s1.gif" width=300>
 </div>
 
-## Setup☕ (Swift Package Manager)
+## Setup☕  (Swift Package Manager)
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
 
@@ -43,11 +43,11 @@ struct ContentView: View {
     var body: some View {
         
         VStack{
+        
             //MARK: Button that opens Share Sheet on click
             GeneratingButtonView(showSheet: $showSheet, buttonLabel: convertButton, convertingView: convertingView)
             
             ScrollView(showsIndicators: true) {
-    
                 VStack{
                     ForEach(1..<20){item in
                         Text("\(item)")
@@ -63,12 +63,14 @@ struct ContentView: View {
         }
     }
     
+    
     //MARK: Button View that converts given View to the PDF file
     private var convertButton: AnyView{
         let buttonView = Image(systemName: "square.and.arrow.up").font(.system(size: 50))
         
         return AnyView(buttonView)
     }
+    
     
     //MARK: View that you wanna convert to PDF
     private var convertingView: AnyView{
