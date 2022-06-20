@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Foundation
-import UIKit
 
 @available(iOS 13.0, *)
 public struct GeneratingButtonView: View {
