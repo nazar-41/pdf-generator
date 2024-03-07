@@ -4,7 +4,7 @@ Native Swift Package for iOS Applications.
 
 **Setup time:** 1 minute
 
-**Sample project:** https://github.com/NazarWelkakayew/PDF-Generator/tree/main/Example
+**Sample project:** https://github.com/nazar-41/PDF-Generator/tree/main/Example
 
 <div>
     <img src="Screenshots/s1.gif" width=300>
@@ -18,7 +18,7 @@ Once you have your Swift package set up, adding Starscream as a dependency is as
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/NazarWelkakayew/PDF-Generator.git", branch: .main)
+    .Package(url: "https://github.com/nazar-41/pdf-generator", branch: .main)
 ]
 ```
 
