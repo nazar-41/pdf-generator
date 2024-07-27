@@ -1,6 +1,6 @@
 //
 //  SwiftUIView.swift
-//  
+//
 //
 //  Created by Belli's MacBook on 18/06/2022.
 //
@@ -8,41 +8,32 @@
 import SwiftUI
 import Foundation
 
-@available(iOS 13.0, *)
-public struct GeneratingButtonView: View {
+@available(iOS 14.0, *)
+public struct PDFGeneratingButton<Content: View, Label: View>: View {
     @StateObject var viewModel = ShareSheetViewModel()
+    @State private var showSheet: Bool = false
     
-    public var showSheet: Binding<Bool>
+    public var content: Content
+    public var label: Label
 
-    public var buttonLabel: AnyView
-    public var convertingView: AnyView
-    
-    
-    
-    public init(showSheet: Binding<Bool>, buttonLabel: AnyView, convertingView: AnyView) {
-        self.buttonLabel = buttonLabel
-        self.convertingView = convertingView
-        self.showSheet = showSheet
-    }
-    
     public var body: some View {
         VStack {
             Button {
                 exportToPDF {
-                    convertingView
+                    content
                 } complition: { status, url in
-                    if let url = url,status{
+                    if let url = url, status {
                         viewModel.pdfURL = url
-                        showSheet.wrappedValue = true
-                    }else{
-                        print("failed to produce pdf file")
+                        showSheet = true
+                    } else {
+                        print("❌Error: failed to produce pdf file")
                     }
                 }
             } label: {
-                buttonLabel
+                label
             }
         }
-        .sheet(isPresented: showSheet) {
+        .sheet(isPresented: $showSheet) {
             viewModel.pdfURL = nil
         } content: {
             if let pdfURL = viewModel.pdfURL {
@@ -53,6 +44,6 @@ public struct GeneratingButtonView: View {
 }
 
 @available(iOS 13.0, *)
-class ShareSheetViewModel: ObservableObject{
+class ShareSheetViewModel: ObservableObject {
     @Published var pdfURL: URL?
 }
