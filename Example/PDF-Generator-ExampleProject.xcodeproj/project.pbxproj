@@ -12,6 +12,7 @@
 		A8597D23285DA72D006EEC69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8597D22285DA72D006EEC69 /* ContentView.swift */; };
 		A8597D25285DA72E006EEC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8597D24285DA72E006EEC69 /* Assets.xcassets */; };
 		A8597D28285DA72E006EEC69 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8597D27285DA72E006EEC69 /* Preview Assets.xcassets */; };
+		F5F2520C2C550063007AB8A2 /* VM+ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2520B2C550063007AB8A2 /* VM+ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		A8597D22285DA72D006EEC69 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A8597D24285DA72E006EEC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8597D27285DA72E006EEC69 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F5F2520B2C550063007AB8A2 /* VM+ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VM+ContentView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				A8597D20285DA72D006EEC69 /* PDF_Generator_ExampleProjectApp.swift */,
 				A8597D22285DA72D006EEC69 /* ContentView.swift */,
+				F5F2520B2C550063007AB8A2 /* VM+ContentView.swift */,
 				A8597D24285DA72E006EEC69 /* Assets.xcassets */,
 				A8597D26285DA72E006EEC69 /* Preview Content */,
 			);
@@ -147,6 +150,7 @@
 			files = (
 				A8597D23285DA72D006EEC69 /* ContentView.swift in Sources */,
 				A8597D21285DA72D006EEC69 /* PDF_Generator_ExampleProjectApp.swift in Sources */,
+				F5F2520C2C550063007AB8A2 /* VM+ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

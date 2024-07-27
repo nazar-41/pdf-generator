@@ -9,23 +9,23 @@ import SwiftUI
 import PDF_Generator
 
 struct ContentView: View {
-    @State private var showSheet: Bool = false
+    @State private var viewModel: VM_ContentView = .init()
     
     var body: some View {
-        
-        VStack{
-            GeneratingButtonView(showSheet: $showSheet,
-                                 buttonLabel: convertButton,
-                                 convertingView: convertingView)
+        VStack {
+            PDFGeneratingButton {
+                ContentView() // view that should be converted
+            } label: {
+                Label("Convert", systemImage: "square.and.arrow.up")
+                    .font(.headline)
+            }
             
             ScrollView(showsIndicators: true) {
-    
-                VStack{
-                    ForEach(1..<20){item in
+                LazyVGrid(columns: viewModel.columns) {
+                    ForEach(viewModel.gridItems, id: \.self) { item in
                         Text("\(item)")
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                            .padding(.vertical)
-                            .background(.gray.opacity(0.3))
+                            .frame(width: 100, height: 100)
+                            .background(viewModel.randomColor())
                             .cornerRadius(20)
                             .padding(.horizontal)
                     }
@@ -33,27 +33,6 @@ struct ContentView: View {
                 .padding(.top, 50)
             }
         }
-    }
-    
-    private var convertButton: some View{
-        
-        let buttonView: some View{
-            
-            Label("Convert", systemImage: "square.and.arrow.up")
-                .font(.system(size: 40))
-        }
-        
-        return Label("Convert", system)
-        
-        return AnyView(buttonView)
-    }
-    
-    private var convertingView: AnyView{
-        let view: some View{
-            ContentView()
-        }
-        
-        return AnyView(view)
     }
 }
 
