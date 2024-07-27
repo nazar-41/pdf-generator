@@ -6,9 +6,14 @@ Native Swift Package for iOS Applications.
 
 **Sample project:** https://github.com/nazar-41/PDF-Generator/tree/main/Example
 
-<div>
-    <img src="Screenshots/s1.gif" width=300>
-</div>
+
+
+
+https://github.com/user-attachments/assets/18ec4fd9-158d-4a50-bdf7-fbbd6c193c5f
+
+
+
+
 
 ## Setup☕  (Swift Package Manager)
 
@@ -37,23 +42,24 @@ import SwiftUI
 import PDF_Generator
 
 struct ContentView: View {
-    
-    @State private var showSheet: Bool = false
+    @State private var viewModel: VM_ContentView = .init()
     
     var body: some View {
-        
-        VStack{
-        
-            //MARK: Button that opens Share Sheet on click
-            GeneratingButtonView(showSheet: $showSheet, buttonLabel: convertButton, convertingView: convertingView)
+        VStack {
+            // Button to generate PDF
+            PDFGeneratingButton {
+                ContentView() // view that should be converted
+            } label: {
+                Label("Convert", systemImage: "square.and.arrow.up")
+                    .font(.headline)
+            }
             
             ScrollView(showsIndicators: true) {
-                VStack{
-                    ForEach(1..<20){item in
+                LazyVGrid(columns: viewModel.columns) {
+                    ForEach(viewModel.gridItems, id: \.self) { item in
                         Text("\(item)")
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                            .padding(.vertical)
-                            .background(.gray.opacity(0.3))
+                            .frame(width: 100, height: 100)
+                            .background(viewModel.randomColor())
                             .cornerRadius(20)
                             .padding(.horizontal)
                     }
@@ -62,21 +68,12 @@ struct ContentView: View {
             }
         }
     }
-    
-    
-    //MARK: Button View that converts given View to the PDF file
-    private var convertButton: AnyView{
-        let buttonView = Image(systemName: "square.and.arrow.up").font(.system(size: 50))
-        
-        return AnyView(buttonView)
-    }
-    
-    
-    //MARK: View that you wanna convert to PDF
-    private var convertingView: AnyView{
-        let view = ContentView()
-        
-        return AnyView(view)
-    }
 }
 ```
+
+### Explanation
+
+- `PDFGeneratingButton`: A SwiftUI button that triggers the conversion of the specified view (`ContentView()` in this case) into a PDF. Customize the button's label to fit your design preferences.
+- `ContentView()`: Replace this with any SwiftUI view you want to convert to PDF.
+- `Label("Convert", systemImage: "square.and.arrow.up")`: The label for the button, featuring a system image and headline font styling.
+
