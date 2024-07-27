@@ -11,10 +11,14 @@ import Foundation
 @available(iOS 14.0, *)
 public struct PDFGeneratingButton<Content: View, Label: View>: View {
     @StateObject var viewModel = ShareSheetViewModel()
-    @State private var showSheet: Bool = false
     
     public var content: Content
     public var label: Label
+    
+    public init(@ViewBuilder _ content: () -> Content, @ViewBuilder label: () -> Label) {
+          self.content = content()
+          self.label = label()
+      }
 
     public var body: some View {
         VStack {
@@ -24,7 +28,7 @@ public struct PDFGeneratingButton<Content: View, Label: View>: View {
                 } complition: { status, url in
                     if let url = url, status {
                         viewModel.pdfURL = url
-                        showSheet = true
+                        viewModel.showSheet = true
                     } else {
                         print("❌Error: failed to produce pdf file")
                     }
@@ -33,7 +37,7 @@ public struct PDFGeneratingButton<Content: View, Label: View>: View {
                 label
             }
         }
-        .sheet(isPresented: $showSheet) {
+        .sheet(isPresented: $viewModel.showSheet) {
             viewModel.pdfURL = nil
         } content: {
             if let pdfURL = viewModel.pdfURL {
@@ -46,4 +50,5 @@ public struct PDFGeneratingButton<Content: View, Label: View>: View {
 @available(iOS 13.0, *)
 class ShareSheetViewModel: ObservableObject {
     @Published var pdfURL: URL?
+    @Published var showSheet: Bool = false
 }

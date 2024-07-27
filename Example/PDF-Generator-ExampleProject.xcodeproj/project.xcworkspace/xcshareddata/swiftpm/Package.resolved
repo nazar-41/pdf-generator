@@ -1,16 +1,15 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "PDF-Generator",
-        "repositoryURL": "https://github.com/NazarWelkakayew/PDF-Generator",
-        "state": {
-          "branch": "main",
-          "revision": "652a486d2eae140a51fc9abed409099c481b30e1",
-          "version": null
-        }
+  "originHash" : "fe694c91eddeab6fdec494569c73eda3b3f1cb0aab862af0f000eac8f5232a48",
+  "pins" : [
+    {
+      "identity" : "pdf-generator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NazarWelkakayew/PDF-Generator",
+      "state" : {
+        "branch" : "main",
+        "revision" : "40a23c787b47c6d066826d4ab6d3052e65cff12a"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 3
 }
